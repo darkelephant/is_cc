@@ -134,6 +134,7 @@ Something/
 venv/
 venv_linux/
 venv_gbu/
+webapp/documents/
 webapp/static/index.html
 base_app.db
 start_app.txt

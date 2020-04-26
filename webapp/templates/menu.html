@@ -1,0 +1,30 @@
+<header>
+    <nav class="teal lighten-2">
+        <div class="nav-wrapper container">
+            <span class="brand-logo">Информационная система судебных дел</span>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#"><i class="material-icons left">person</i>Войти</a></li>
+            </ul>
+        </div>
+    </nav>
+    <a href="#" id="special-position-menu-trigger" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="{{ url_for('static', filename='images/_1418-10202.jpg') }}" alt="uhhh">
+                </div>
+                <a href="#user"><img class="circle z-depth-3" src="{{ url_for('static', filename='images/user.jpg') }}" alt="Pictures"></a>
+                <span class="white-text name">First name Second name</span>
+            </div>
+        </li>
+        <li><a href="#!">Судебные дела</a></li>
+        <li><a href="#!">Календарь заседаний</a></li>
+        <li><a href="#!">Отчеты</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect" href="#!">Добавить дело</a></li>
+        <li><a class="waves-effect" href="#!">Добавить событие</a></li>
+        <li><div class="divider"></div></li>
+        <li><a href="#!">Выйти</a></li>
+    </ul>
+</header>

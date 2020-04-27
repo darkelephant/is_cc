@@ -52,6 +52,27 @@ body {
     left: 23px;
 }
 
+/* ---------------------- ALERT ------------------------ */
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+/* ---------------------- MARGIN ----------------------- */
+.mt10 { margin-top: 10px; }
+.mt20 { margin-top: 20px; }
+.mt30 { margin-top: 30px; }
+
+
 /* ----------------------- TEXT ----------------------- */
 .text-bold {
     font-weight: 700;

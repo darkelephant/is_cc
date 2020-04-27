@@ -1,34 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% with messages = get_flashed_messages() %}
-    {% if messages %} 
-        {% for message in messages %}
-            {{ message }}<br>
-        {% endfor %}   
-    {% endif %}
-{% endwith %}
 <main>
     <div class="container">
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %} 
+                {% for message in messages %}
+                    {{ message }}<br>
+                {% endfor %}   
+            {% endif %}
+        {% endwith %}
+        
         <div class="block-information">
             <div class="card-information white">
-                дел
-                <p class="text-bold text-large-number">100</p>
+                дел <p class="text-bold text-large-number">{{ count_case }}</p>
             </div>
-
             <div class="card-information white">
-                решений
-                <p class="text-bold text-large-number">10</p>
+                завершено <p class="text-bold text-large-number">{{ count_case_complete }}</p>
             </div>
-
             <div class="card-information white">
-                зу
-                <p class="text-bold text-large-number">90</p>
+                зу <p class="text-bold text-large-number">{{ count_parcels }}</p>
             </div>
-
             <div class="card-information white">
-                окс
-                <p class="text-bold text-large-number">10</p>
+                окс <p class="text-bold text-large-number">{{ count_realty }}</p>
             </div>
         </div>
 
@@ -36,36 +31,28 @@
             <div class="col s8">
                 <div class="card white z-depth-0">
                     <div class="card-content black-text">
-                      <span class="card-title">Добавленные дела</span>
+                      <span class="card-title">Добавленные судебные дела</span>
                       <table>
                         <thead>
                             <tr>
                                 <th>Номер дела</th>
                                 <th>Истец</th>
                                 <th>Количество объектов</th>
-                                <th>Снижение кадастровой стоимости</th>
+                                <th>Количество документов</th>
+                                <th>Статус дела</th>
                             </tr>
                         </thead>
                 
                         <tbody>
+                            {% for case in cases %}
                             <tr>
-                                <td>Eclair</td>
-                                <td>$0.87</td>
-                                <td>$0.87</td>
-                                <td>$0.87</td>
+                                <td><a href="{{ url_for('case.case_information', case_id=case.id) }}">{{ case.number_case }}</a></td>
+                                <td>{{ case.applicant }}</td>
+                                <td class="center-align">{{ case.count_objects() }}</td>
+                                <td class="center-align">{{ case.count_documents() }}</td>
+                                <td class="center-align">{{ case.status_case_description() }}</td>
                             </tr>
-                            <tr>
-                                <td>Eclair</td>
-                                <td>$0.87</td>
-                                <td>$0.87</td>
-                                <td>$0.87</td>
-                            </tr>
-                            <tr>
-                                <td>Eclair</td>
-                                <td>$0.87</td>
-                                <td>$0.87</td>
-                                <td>$0.87</td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                     </div>
@@ -74,32 +61,24 @@
             <div class="col s4">
                 <div class="card white z-depth-0">
                     <div class="card-content black-text">
-                      <span class="card-title">События</span>
+                      <span class="card-title">Добавленные события</span>
                         <table>
                             <thead>
                                 <tr>
                                     <th>Дата заседания</th>
+                                    <th>Время заседания</th>
                                     <th>Номер дела</th>
-                                    <th>Истец</th>
                                 </tr>
                             </thead>
                     
                             <tbody>
+                                {% for event in events %}
                                 <tr>
-                                    <td>Alvin</td>
-                                    <td>Eclair</td>
-                                    <td>$0.87</td>
+                                    <td class="center-align">{{ event.fdate }}</td>
+                                    <td class="center-align">{{ event.ftime }}</td>
+                                    <td>{{ event.number_case }}</td>
                                 </tr>
-                                <tr>
-                                    <td>Alvin</td>
-                                    <td>Eclair</td>
-                                    <td>$0.87</td>
-                                </tr>
-                                <tr>
-                                    <td>Alvin</td>
-                                    <td>Eclair</td>
-                                    <td>$0.87</td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
@@ -110,7 +89,7 @@
 
 
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large  green lighten-1">
+        <a class="btn-floating btn-large green lighten-1" href="{{ url_for('case.add_case') }}">
             <i class="large material-icons">mode_edit</i>
         </a>
     </div>

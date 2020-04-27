@@ -3,6 +3,15 @@
 {% block content %}
 <main>
     <div class="container">
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %} 
+                {% for message in messages %}
+                    {{ message }}<br>
+                {% endfor %}   
+            {% endif %}
+        {% endwith %}
+        
         <div class="block-information">
             <div class="card-information white">
                 дел <p class="text-bold text-large-number">{{ count_case }}</p>

@@ -140,3 +140,4 @@ base_app.db
 start_app.txt
 start.bat
 todo.md
+create_admin.py

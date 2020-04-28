@@ -6,6 +6,7 @@ from webapp.dashboard.models import Case, RealtyObject, Event
 
 blueprint = Blueprint('dashboard', __name__)
 
+
 @blueprint.route("/")
 def dashboard_index():
     content = {}    
@@ -16,4 +17,3 @@ def dashboard_index():
     content['cases'] = Case.query.order_by(Case.id.desc()).limit(3)
     content['events'] = Event.query.order_by(Event.id.desc()).limit(3)
     return render_template('dashboard/index.html', **content)
-    

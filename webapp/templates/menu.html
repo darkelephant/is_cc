@@ -4,9 +4,14 @@
             <span class="brand-logo">Информационная система судебных дел</span>
             <ul class="right hide-on-med-and-down">
                 {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('user.logout') }}"><i class="material-icons left">person</i>Выйти</a></li>
+                <li><a href="{{ url_for('_user.logout') }}"><i class="material-icons left">person</i>Выйти</a></li>
                 {% else %}
-                <li><a href="{{ url_for('user.login') }}"><i class="material-icons left">person</i>Войти</a></li>
+                <li><a href="{{ url_for('_user.login') }}"><i class="material-icons left">person</i>Войти</a></li>
+                {% endif %}
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                {% if current_user.login == 'admin' %}
+                <li><a href="/admin"><i class="material-icons left">person</i>Админка</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -20,7 +25,7 @@
                     <img src="{{ url_for('static', filename='images/_1418-10202.jpg') }}" alt="uhhh">
                 </div>
                 <a href="#user"><img class="circle z-depth-3" src="{{ url_for('static', filename='images/user.jpg') }}" alt="Pictures"></a>
-                <span class="white-text name">First name Second name</span>
+                <span class="white-text name">Hi {{ current_user.first_name }} {{ current_user.last_name}}</span>
             </div>
         </li>
         <li><a href="#!">Судебные дела</a></li>

@@ -3,8 +3,8 @@ from flask_login import LoginManager
 
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-# from webapp.admin.models import AdminView
 from webapp.admin.models import HomeAdminView
+from webapp.admin.models import UserModelView
 
 from webapp.db import db
 from webapp.case.views import blueprint as case_blueprint
@@ -20,7 +20,7 @@ def create_app():
     db.init_app(app)
 
     admin = Admin(app, 'На главную', url='/', index_view=HomeAdminView(name='Домой'))
-    admin.add_view(ModelView(User, db.session))
+    admin.add_view(UserModelView(User, db.session))
     admin.add_view(ModelView(Role, db.session))
 
     app.register_blueprint(case_blueprint)
@@ -36,3 +36,4 @@ def create_app():
         return User.query.get(user_id)
 
     return app
+

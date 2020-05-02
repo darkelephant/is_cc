@@ -4,13 +4,14 @@ from sqlalchemy.orm import relationship
 
 from webapp.db import db
 
+
 class Case(db.Model):
     __tablename__ = "case"
     id = db.Column(db.Integer, primary_key=True)
     number_case = db.Column(db.String, unique=True, nullable=False)
     applicant = db.Column(db.String, nullable=False)
     type_applicant = db.Column(db.Integer, db.ForeignKey('type_applicant.id'))
-    appraiser  = db.Column(db.String, nullable=True)
+    appraiser = db.Column(db.String, nullable=True)
     judge = db.Column(db.String, nullable=True)
     status_case = db.Column(db.Integer, db.ForeignKey('status_case.id'))
     comment = db.Column(db.String, nullable=True)
@@ -27,6 +28,7 @@ class Case(db.Model):
 
     def __repr__(self):
         return f'Case: {self.number_case}, id: {self.id}>'
+
 
 class RealtyObject(db.Model):
     __tablename__ = "realty_object"
@@ -46,6 +48,7 @@ class RealtyObject(db.Model):
 
     def __repr__(self):
         return f'<Realty object: {self.cadastral_number} for case {self.number_case}>'
+
 
 class Document(db.Model):
     __tablename__ = "documents"
@@ -67,6 +70,7 @@ class Document(db.Model):
 
     def __repr__(self):
         return f'<Document: {self.title} for case {self.number_case}>'
+
 
 class Event(db.Model):
     __tablename__ = "events"
@@ -91,6 +95,7 @@ class Event(db.Model):
     def __repr__(self):
         return f'<Event: {self.date} for case {self.number_case}>'
 
+
 class Categories(db.Model):
     __tablename__ = "categories"
     id = db.Column(db.Integer, primary_key=True)
@@ -101,6 +106,7 @@ class Categories(db.Model):
     def __repr__(self):
         return f'Category: {self.id}, {self.description}>'
 
+
 class TypeApplicant(db.Model):
     __tablename__ = "type_applicant"
     id = db.Column(db.Integer, primary_key=True)
@@ -108,6 +114,7 @@ class TypeApplicant(db.Model):
     
     def __repr__(self):
         return f'Type applicant: {self.id}, {self.description}>'
+
 
 class TypeDocument(db.Model):
     __tablename__ = "type_document"
@@ -117,6 +124,7 @@ class TypeDocument(db.Model):
     def __repr__(self):
         return f'Type document: {self.id}, {self.description}>'
 
+
 class TypeRealty(db.Model):
     __tablename__ = "type_realty"
     id = db.Column(db.Integer, primary_key=True)
@@ -124,6 +132,7 @@ class TypeRealty(db.Model):
     
     def __repr__(self):
         return f'Type realty: {self.id}, {self.description}>'
+
 
 class StatusCase(db.Model):
     __tablename__ = "status_case"

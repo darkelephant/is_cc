@@ -4,8 +4,10 @@ from flask import Flask, request, redirect, url_for
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg',
-                         'gif', 'doc', 'docx', 'xlsx'])
+ALLOWED_EXTENSIONS = {
+    'txt', 'pdf', 'png', 'jpg', 'jpeg',
+    'gif', 'doc', 'docx', 'xlsx'
+}
 
 app = Flask(__name__)
 
@@ -35,4 +37,4 @@ def upload_file():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='localhost', port=5001, debug=True)

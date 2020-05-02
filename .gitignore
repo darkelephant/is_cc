@@ -141,3 +141,4 @@ create_*
 base_app.db
 start*
 todo.md
+.idea/*

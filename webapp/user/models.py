@@ -27,18 +27,19 @@ class User(db.Model, UserMixin):
 
     @property
     def is_admin(self):
-        return self.role == 5 # Администратор
+        return self.role == 5  # Администратор
 
     @property
     def is_lawyer(self):
-        return self.role == 3 # Юрист
+        return self.role == 3  # Юрист
 
     @property
     def is_user(self):
-        return self.role == 2 # Пользователь
+        return self.role == 2  # Пользователь
 
     def __repr__(self):
         return "<Пользователь: {}, ID: {}>".format(self.login, self.id)
+
 
 class Role(db.Model):
     __tablename__ = 'roles'
